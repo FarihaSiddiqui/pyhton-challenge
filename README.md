@@ -1,2 +1,2 @@
-# pyhton-challenge
+# python-challenge
 Python Assignment 
