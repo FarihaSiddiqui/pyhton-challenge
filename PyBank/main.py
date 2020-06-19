@@ -12,8 +12,6 @@ with open(csvpath) as csvfile:
     
     row = next(csvreader,None)
    
-    # total_months =len(list(csvreader))
-   
     total_months = 1
     total = 0
     change_list_amount = []
@@ -23,16 +21,20 @@ with open(csvpath) as csvfile:
     profit_loss = 0
 
     for row in csvreader:
+        # Calculate the total number of months
         total_months += 1
 
+        # Calculate the net total amount of "Profit/Losses" over the entire period
         profit_loss = int(row[1])
         total = total + first_profit_loss + profit_loss
         first_profit_loss = 0
         
+        #Calculate the average of the changes in "Profit/Losses" over the entire period
         net_change_amount = int(row[1]) - prev_net
         prev_net = int(row[1])
         net_change_month = row[0]
 
+        # calculate the greatest increase and decrease in Profit/Losses over the entire period
         change_list_amount.append(net_change_amount)
         change_list_month.append(net_change_month)
         greatest_increase_amount = max(change_list_amount)
@@ -43,7 +45,9 @@ with open(csvpath) as csvfile:
         
         best_month = change_list_month[month_index_inc]
         worst_month = change_list_month[month_index_dec]
-    avg = round((sum(change_list_amount))/(len(change_list_amount)),2)        
+    avg = round((sum(change_list_amount))/(len(change_list_amount)),2)    
+
+# Display results    
 print("Financial Analysis")
 print("----------------------------")
 print(f"Total months: {total_months}")   
