@@ -35,7 +35,7 @@ with open(csvpath) as csvfile:
         total = total + first_profit_loss + profit_loss
         first_profit_loss = 0
         
-        #Calculate the average of the changes in "Profit/Losses" over the entire period
+        # Calculate the average of the changes in "Profit/Losses" over the entire period
         net_change_amount = int(row[1]) - prev_net
         prev_net = int(row[1])
         net_change_month = row[0]
